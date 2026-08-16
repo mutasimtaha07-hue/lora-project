@@ -1,0 +1,16 @@
+# The full experiment matrix described in PROPOSAL.md's "Experimental Design":
+# 5 ranks x 3 seeds x 2 datasets = 30 LoRA runs, plus one full-fine-tuning
+# baseline per dataset per seed. Intended to drive experiments/rank_sweep.py
+# once that driver script is written (later implementation step) — not yet
+# consumed by any code.
+
+datasets: [sst2, ag_news]
+
+lora_ranks: [1, 2, 4, 8, 16]
+seeds: [42, 123, 999]
+
+methods: [full, lora]
+
+# Fallback priority if GPU time runs short (PROPOSAL.md "Limitations & Risks"):
+reduced_lora_ranks: [1, 4, 16]
+priority_dataset: sst2

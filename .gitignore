@@ -1,0 +1,82 @@
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Virtual environment ---------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# --- Project: generated / large artifacts -----------------------------------
+# Model checkpoints (LoRA adapters + full fine-tuning weights) — large,
+# regenerable from configs + training code, not meant to live in git history.
+# (Negating a file nested two-plus levels deep under an ignored dir requires
+# also un-ignoring the intermediate directories themselves, or git prunes the
+# whole subtree before it ever checks the file-level negation.)
+checkpoints/**
+!checkpoints/**/
+!checkpoints/**/.gitkeep
+
+# Raw per-run experiment result JSONs (results/raw/*.json, at any depth,
+# including nested run subdirectories like results/raw/ag_news_lr_fix/) are
+# intentionally TRACKED — they're small (~33 KB total across all 33 runs)
+# and are primary experimental evidence, not just regenerable scratch output.
+# Only the JSON summaries are un-ignored here; any other file type that ever
+# lands in results/raw/ (logs, temp files, etc.) remains ignored.
+results/raw/**
+!results/raw/**/
+!results/raw/**/.gitkeep
+!results/raw/**/*.json
+
+# Intermediate processed artifacts remain ignored — regenerable via
+# experiments/generate_report_figures.py, not primary evidence like the raw
+# JSONs above or the curated tables below.
+results/processed/**
+!results/processed/**/
+!results/processed/**/.gitkeep
+
+# Generated figures (figures/*.png) are intentionally TRACKED, not ignored:
+# they're report deliverables referenced directly by README.md and
+# report/final_report.md. Regenerable via experiments/generate_report_figures.py
+# if ever needed, but committed here so the repo is self-contained.
+
+# Downloaded datasets, if ever cached locally instead of in the HF cache dir.
+data/**
+!data/**/
+!data/README.md
+!data/**/.gitkeep
+
+# Hugging Face cache, if ever redirected into the project (HF_HOME=./.hf_cache).
+.hf_cache/
+.cache/
+
+# --- Reports -----------------------------------------------------------------
+# report/*.md is intentionally TRACKED (the final technical report source).
+# Large generated binaries (e.g. a rendered PDF build of the report) are
+# excluded repo-wide below, so a PDF can be built locally without bloating
+# git history.
+*.pdf
+
+# --- Jupyter -----------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --- OS / editor -------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# --- Logs ---------------------------------------------------------------------
+*.log
+logs/
+wandb/
+runs/

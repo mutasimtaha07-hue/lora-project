@@ -1,0 +1,45 @@
+{
+  "run_name": "ag_news_lora_r4_seed42",
+  "dataset": "ag_news",
+  "method": "lora",
+  "model_name": "roberta-base",
+  "rank": 4,
+  "lora_alpha": 16,
+  "lora_dropout": 0.1,
+  "target_modules": [
+    "query",
+    "value"
+  ],
+  "seed": 42,
+  "learning_rate": 0.0002,
+  "epochs": 3.0,
+  "batch_size": 32,
+  "eval_batch_size": 64,
+  "weight_decay": 0.01,
+  "max_length": 128,
+  "max_train_samples": null,
+  "max_eval_samples": null,
+  "train_samples_used": 120000,
+  "eval_samples_used": 7600,
+  "trainable_params": 741124,
+  "total_params": 125389832,
+  "train_time_seconds": 3609.7969522476196,
+  "epoch_times_seconds": [
+    1033.542582988739,
+    1023.2416627407074,
+    1453.8995378017426
+  ],
+  "avg_epoch_time_seconds": 1170.2279278437297,
+  "eval_metrics": {
+    "eval_loss": 0.1749119758605957,
+    "eval_accuracy": 0.9425,
+    "eval_f1": 0.9424688643897792,
+    "eval_precision": 0.9427711584462519,
+    "eval_recall": 0.9425,
+    "eval_runtime": 32.827,
+    "eval_samples_per_second": 231.517,
+    "eval_steps_per_second": 3.625,
+    "epoch": 3.0
+  },
+  "peak_gpu_memory_bytes": 2629501440
+}

@@ -314,8 +314,8 @@ lora-reproduction/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/lora-reproduction.git
-cd lora-reproduction
+git clone https://github.com/mutasimtaha07-hue/lora-project.git
+cd lora-project
 ```
 
 ### Create a virtual environment

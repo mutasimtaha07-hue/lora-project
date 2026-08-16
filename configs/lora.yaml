@@ -1,0 +1,23 @@
+# Default LoRA hyperparameters, mirroring src/model.py::LoRASettings.
+# Not yet auto-loaded by src/train.py (which currently takes these as CLI
+# flags) — this file documents the defaults and doubles as a reference for
+# writing the experiments/rank_sweep.py driver in a later step.
+
+model_name: roberta-base
+target_modules: [query, value]   # Q and V attention projections only, per the paper
+
+lora:
+  r: 8               # overridden per-run during the rank sweep: 1, 2, 4, 8, 16
+  lora_alpha: 16
+  lora_dropout: 0.1
+  bias: none
+
+optimization:
+  learning_rate: 2.0e-4
+  weight_decay: 0.01
+  batch_size: 32
+  eval_batch_size: 64
+  epochs: 3
+  max_length: 128
+
+seeds: [42, 123, 999]

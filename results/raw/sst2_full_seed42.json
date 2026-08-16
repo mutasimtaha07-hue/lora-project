@@ -1,0 +1,36 @@
+{
+  "run_name": "sst2_full_seed42",
+  "dataset": "sst2",
+  "method": "full",
+  "rank": null,
+  "lora_alpha": null,
+  "lora_dropout": null,
+  "seed": 42,
+  "learning_rate": 2e-05,
+  "epochs": 3.0,
+  "batch_size": 32,
+  "max_length": 128,
+  "max_train_samples": null,
+  "max_eval_samples": null,
+  "train_samples_used": 67349,
+  "eval_samples_used": 872,
+  "trainable_params": 124647170,
+  "total_params": 124647170,
+  "train_time_seconds": 890.1267039775848,
+  "epoch_times_seconds": [
+    880.9855489730835
+  ],
+  "avg_epoch_time_seconds": 880.9855489730835,
+  "eval_metrics": {
+    "eval_loss": 0.24588051438331604,
+    "eval_accuracy": 0.9438073394495413,
+    "eval_f1": 0.9453734671125975,
+    "eval_precision": 0.9359823399558499,
+    "eval_recall": 0.954954954954955,
+    "eval_runtime": 4.1138,
+    "eval_samples_per_second": 211.969,
+    "eval_steps_per_second": 3.403,
+    "epoch": 3.0
+  },
+  "peak_gpu_memory_bytes": 4147044352
+}

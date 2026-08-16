@@ -1,0 +1,15 @@
+# Default full-fine-tuning hyperparameters (the baseline all LoRA ranks are
+# compared against). Not yet auto-loaded by src/train.py — see note in
+# configs/lora.yaml.
+
+model_name: roberta-base
+
+optimization:
+  learning_rate: 2.0e-5   # full fine-tuning typically needs a smaller LR than LoRA
+  weight_decay: 0.01
+  batch_size: 32
+  eval_batch_size: 64
+  epochs: 3
+  max_length: 128
+
+seeds: [42, 123, 999]

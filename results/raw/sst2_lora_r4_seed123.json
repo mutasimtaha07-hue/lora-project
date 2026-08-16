@@ -1,0 +1,38 @@
+{
+  "run_name": "sst2_lora_r4_seed123",
+  "dataset": "sst2",
+  "method": "lora",
+  "rank": 4,
+  "lora_alpha": 16,
+  "lora_dropout": 0.1,
+  "seed": 123,
+  "learning_rate": 0.0002,
+  "epochs": 3.0,
+  "batch_size": 32,
+  "max_length": 128,
+  "max_train_samples": null,
+  "max_eval_samples": null,
+  "train_samples_used": 67349,
+  "eval_samples_used": 872,
+  "trainable_params": 739586,
+  "total_params": 125386756,
+  "train_time_seconds": 1858.5702867507935,
+  "epoch_times_seconds": [
+    593.5171694755554,
+    628.3323361873627,
+    622.5611746311188
+  ],
+  "avg_epoch_time_seconds": 614.8035600980123,
+  "eval_metrics": {
+    "eval_loss": 0.20652981102466583,
+    "eval_accuracy": 0.9392201834862385,
+    "eval_f1": 0.9403824521934758,
+    "eval_precision": 0.9393258426966292,
+    "eval_recall": 0.9414414414414415,
+    "eval_runtime": 3.7544,
+    "eval_samples_per_second": 232.262,
+    "eval_steps_per_second": 3.729,
+    "epoch": 3.0
+  },
+  "peak_gpu_memory_bytes": 2629476864
+}

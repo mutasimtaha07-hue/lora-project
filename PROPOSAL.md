@@ -4,6 +4,12 @@
 
 > **LebNet Tech Fellows 2026 — Option 1: Reproduce an Academic Paper + Extend It**
 
+> **Status: ✅ Complete**
+>
+> This proposal documents the original research plan. The experiments and analysis
+> described here have now been completed. For final results, figures, and conclusions,
+> see [README.md](README.md) and [report/final_report.md](report/final_report.md).
+
 ---
 
 ## 📌 Overview
@@ -193,29 +199,12 @@ The experiments will evaluate both **task quality** and **computational efficien
 
 ## 📋 Results
 
-Results will be reported after the experiments are completed.
-
-### SST-2
-
-| Method           | Rank | Accuracy |  F1 | Trainable Params | GPU Memory | Time/Epoch |
-| ---------------- | ---: | -------: | --: | ---------------: | ---------: | ---------: |
-| Full Fine-Tuning |    — |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    1 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    2 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    4 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    8 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |   16 |      TBD | TBD |              TBD |        TBD |        TBD |
-
-### AG News
-
-| Method           | Rank | Accuracy |  F1 | Trainable Params | GPU Memory | Time/Epoch |
-| ---------------- | ---: | -------: | --: | ---------------: | ---------: | ---------: |
-| Full Fine-Tuning |    — |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    1 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    2 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    4 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |    8 |      TBD | TBD |              TBD |        TBD |        TBD |
-| LoRA             |   16 |      TBD | TBD |              TBD |        TBD |        TBD |
+✅ **Completed.** This section originally held placeholder tables (rank × seed × method,
+by dataset) to be filled in after experimentation. The full measured results — accuracy,
+F1, precision, recall, trainable parameters, GPU memory, and training time for every rank
+and seed on both datasets, plus both full-fine-tuning baselines — are now documented in
+[README.md](README.md) (summary tables and figures) and
+[report/final_report.md](report/final_report.md) (complete tables and analysis).
 
 ---
 
@@ -597,9 +586,12 @@ LebNet Tech Fellows 2026
 ## ⭐ Project Status
 
 ```text
-🟡 In Progress
+✅ Complete
 ```
 
-The repository is currently under development. Experimental results will be added as the reproduction and extension experiments are completed.
+All experiments described in this proposal — the SST-2 and AG News LoRA rank sweeps (5
+ranks × 3 seeds each), both full-fine-tuning baselines, and the resulting analysis — have
+been completed. See [README.md](README.md) for the final results summary and
+[report/final_report.md](report/final_report.md) for the complete technical report.
 
 ---

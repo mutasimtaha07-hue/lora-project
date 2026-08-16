@@ -69,6 +69,14 @@ Mean validation accuracy (LoRA: mean across 3 seeds; Full FT: single seed, 42):
 | SST-2 | 0.9354 | 0.9346 | 0.9362 | 0.9365 | 0.9373 | 0.9438 |
 | AG News | 0.9408 | 0.9421 | 0.9428 | 0.9426 | 0.9433 | 0.9542 |
 
+![Accuracy vs. LoRA Rank](figures/accuracy_vs_rank.png)
+
+*Mean validation accuracy vs. LoRA rank for SST-2 and AG News (error bars: std across 3 seeds).*
+
+![F1 vs. LoRA Rank](figures/f1_vs_rank.png)
+
+*Mean validation F1 vs. LoRA rank, mirroring the accuracy trend above.*
+
 **Conclusions:**
 - **r=16 is the best mean rank on both datasets**, but the gap from r=1 is small: **+0.19
   percentage points** on SST-2 and **+0.25 percentage points** on AG News.
@@ -79,6 +87,14 @@ Mean validation accuracy (LoRA: mean across 3 seeds; Full FT: single seed, 42):
 - **LoRA uses less than 1% of full fine-tuning's trainable parameters** at every rank
   tested, while reaching within roughly 0.7–1.4 accuracy points of full fine-tuning on
   both datasets.
+
+![LoRA vs. Full Fine-Tuning](figures/lora_vs_full_ft.png)
+
+*LoRA (r=1..16) accuracy against the full-fine-tuning reference (hatched bars, single seed, no error bar) for both datasets.*
+
+![Rank Sensitivity: Accuracy Change Relative to r=1](figures/rank_sensitivity.png)
+
+*Change in mean accuracy relative to r=1 — the deliberately narrow y-axis makes clear how small the rank effect actually is.*
 
 These are descriptive findings from a three-seed experimental matrix — see
 [Limitations](#limitations) below and the report's own limitations section for how much
@@ -92,21 +108,16 @@ weight to place on them.
 | LoRA r=16 | 1,183,492 | 0.941% |
 | Full fine-tuning | 124,648,708 | 100% |
 
-(Figures above use AG News's exact parameter counts; SST-2's are within 0.25% of these —
+(The table above uses AG News's exact parameter counts; SST-2's are within 0.25% of these —
 see the report for the full breakdown by dataset.)
 
-## Figures
+![Trainable Parameters vs. Rank](figures/trainable_params_vs_rank.png)
 
-All figures are generated from the stored experiment results by
-[`experiments/generate_report_figures.py`](experiments/generate_report_figures.py) and
-are included in this repository (not just regenerable — see [Reproducibility](#reproducibility)):
+*Trainable parameters vs. rank (log-scaled y-axis) — the full-fine-tuning reference line sits roughly two orders of magnitude above every LoRA rank tested.*
 
-- [`figures/accuracy_vs_rank.png`](figures/accuracy_vs_rank.png) — mean accuracy vs. LoRA rank, both datasets
-- [`figures/f1_vs_rank.png`](figures/f1_vs_rank.png) — mean F1 vs. LoRA rank, both datasets
-- [`figures/lora_vs_full_ft.png`](figures/lora_vs_full_ft.png) — LoRA (r=1..16) vs. full fine-tuning
-- [`figures/trainable_params_vs_rank.png`](figures/trainable_params_vs_rank.png) — trainable parameters vs. rank (log scale)
-- [`figures/parameter_efficiency.png`](figures/parameter_efficiency.png) — accuracy vs. % of full-FT parameters trained
-- [`figures/rank_sensitivity.png`](figures/rank_sensitivity.png) — accuracy change relative to r=1
+![Parameter Efficiency: Accuracy vs. % of Full-FT Parameters](figures/parameter_efficiency.png)
+
+*Mean accuracy vs. trainable parameters as a percentage of full fine-tuning — both datasets cluster in the low-parameter region while remaining close to their full-FT reference points. All six figures above are generated from the stored experiment results by [`experiments/generate_report_figures.py`](experiments/generate_report_figures.py) and are included in this repository, not just regenerable — see [Reproducibility](#reproducibility) below.*
 
 ## Reproducibility
 

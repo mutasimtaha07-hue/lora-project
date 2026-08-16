@@ -1,5 +1,10 @@
 # Reproducing LoRA: Cross-Dataset Rank Sensitivity
 
+> A controlled 30-run study of LoRA rank sensitivity across SST-2 and AG News using
+> RoBERTa-base, with 5 ranks × 3 seeds per dataset and full-fine-tuning baselines.
+
+`30 LoRA runs` · `2 datasets` · `5 ranks × 3 seeds` · `RoBERTa-base` · `PEFT / LoRA`
+
 ## Overview
 
 This repository reproduces the core fine-tuning methodology of **LoRA: Low-Rank
@@ -15,6 +20,13 @@ News** (four-class topic classification) — and compare against a full-fine-tun
 baseline for each dataset. The full experimental record (30 LoRA runs, 2 full-FT
 baselines, one preserved failed run), analysis code, figures, and technical report are
 included in this repository.
+
+### Key Takeaway
+
+The experiment does not support the hypothesis that the more complex four-class AG News
+task requires substantially higher LoRA rank. Across both datasets, increasing rank from
+1 to 16 produced only marginal gains while LoRA trained less than 1% of the parameters
+used by full fine-tuning.
 
 ## Research Question
 
@@ -173,15 +185,17 @@ run `python -m src.train --help` for the complete, current flag list.
 
 Each run writes one JSON summary to `results/raw/{run_name}.json`, containing the full
 effective hyperparameters, trainable/total parameter counts, per-epoch and total training
-time, peak GPU memory, and final evaluation metrics. `results/raw/` itself is not tracked
-in this repository (see [Project Structure](#project-structure)) — running the commands
-above regenerates it locally.
+time, peak GPU memory, and final evaluation metrics. **`results/raw/` is tracked in this
+repository** — it contains the 33 recorded result JSONs from the actual experiment runs
+(see [Project Structure](#project-structure)) and is the primary record of what was
+measured. Re-running the training commands above is optional for reproduction; the
+repository already contains the recorded results.
 
 ### 5. Run the analysis / figure-generation script
 
-Once `results/raw/` is populated (either by running the training commands above, or by
-using this repository's own record if you have access to it), regenerate the figures and
-summary tables with:
+The figure/table generation script reads the stored, tracked JSONs already in
+`results/raw/` — no training run is required — and regenerates the figures and summary
+tables with:
 
 ```bash
 python -m experiments.generate_report_figures
@@ -213,7 +227,7 @@ lora-project/
 ├── experiments/
 │   └── generate_report_figures.py   # regenerates figures/ + results/tables/ from results/raw/
 ├── results/
-│   ├── raw/                    # per-run result JSONs (regenerated locally, not tracked)
+│   ├── raw/                    # 33 tracked per-run result JSONs — primary recorded outputs
 │   └── tables/                 # curated summary CSV/Markdown tables (tracked)
 ├── figures/                    # generated PNG figures (tracked)
 ├── checkpoints/                # per-run model/adapter checkpoints (large, not tracked)

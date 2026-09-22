@@ -435,6 +435,23 @@ def generate_tables():
         "LoRA sweep, there is no seed-based error bar on the full-FT reference points/lines in these "
         "figures and tables."
     )
+    md.append(
+        "- **Raw result JSON schema differs by dataset.** All 16 SST-2 result files (15 LoRA runs + the "
+        "full-FT baseline) were written before `model_name`, `eval_batch_size`, `weight_decay`, and "
+        "`target_modules` were added to `src/train.py`'s output summary, so those files omit these fields. "
+        "All 17 AG News result files (15 LoRA runs + both the valid and failed full-FT runs) were written "
+        "after that change and include them. This does not affect any figure or table above — none of the "
+        "added fields are read by this script — but it means the two datasets' raw JSONs are not "
+        "byte-for-byte interchangeable in structure."
+    )
+    md.append(
+        "- **AG News full-fine-tuning result file locations:** the valid, corrected baseline (lr=2e-5, "
+        "used throughout this report) is stored at `results/raw/ag_news_lr_fix/ag_news_full_seed42.json`. "
+        "The failed lr=2e-4 run (see above) is preserved separately at the top-level "
+        "`results/raw/ag_news_full_seed42.json`. Both files share the same `run_name`; they are "
+        "distinguished only by directory, so callers must read from the correct path rather than the "
+        "filename alone."
+    )
 
     (TABLES_DIR / "summary_tables.md").write_text("\n".join(md), encoding="utf-8")
 

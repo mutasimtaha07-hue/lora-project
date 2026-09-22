@@ -528,6 +528,27 @@ documented in `results/tables/summary_tables.md`'s reproducibility notes.
    claims in Sections 7–10 are based on comparing means and standard deviations across
    three-seed samples, not on formal hypothesis tests (e.g., no t-tests, confidence
    intervals, or multiple-comparison correction were computed).
+8. **Reported metrics reflect best-of-3-epochs checkpoint selection on the same split used
+   for final reporting, not evaluation on a completely untouched held-out set.** Every run
+   uses `Trainer(..., load_best_model_at_end=True, metric_for_best_model="accuracy")`
+   (`src/train.py`), so at the end of training the model is reloaded to whichever of its 3
+   epoch checkpoints scored highest on the eval split, and `trainer.evaluate()` is then
+   called on that same split to produce the final numbers recorded in `results/raw/`. For
+   SST-2 the eval split is GLUE's labeled `validation` set; for **AG News, the eval split is
+   the dataset's `test` split** (Section 4), so AG News's checkpoint selection and its final
+   reported metrics use the identical split. Concretely, this means the accuracy/F1 figures
+   throughout this report are a **maximum over 3 checkpoints evaluated on the reporting
+   split**, not a single blind evaluation — which can introduce a **mild optimistic bias in
+   the absolute metric values**, most directly for AG News, where no split independent of
+   both checkpoint selection and final reporting exists. This is **not** train/evaluation
+   data leakage in the usual sense: the model never trains on the eval split, and no
+   eval-split labels or examples enter the training loop or the LoRA/full-FT parameter
+   updates at any point. The effect is a **checkpoint-selection bias**, applied uniformly
+   across all 33 runs (every rank, every seed, both methods, both datasets), which is why it
+   is treated here as a caveat on the absolute accuracy/F1 numbers rather than a reason to
+   discount the rank-sensitivity conclusions in Sections 7–10: those conclusions rest on
+   *relative* comparisons across ranks and datasets, and a bias applied equally to every
+   condition being compared does not, by itself, favor one rank or dataset over another.
 
 ---
 

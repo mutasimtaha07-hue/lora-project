@@ -1,0 +1,12 @@
+# Test-only dependencies for `tests/`. NOT required to run any training run
+# or to reproduce any of the 33 recorded experiments in results/raw/ -- see
+# requirements.txt for that pinned research/training environment, which this
+# file intentionally does not modify or duplicate.
+#
+# Install on top of the main environment with:
+#   pip install -r requirements-dev.txt
+#
+# Then run the suite from the project root with:
+#   python -m pytest tests/ -v
+
+pytest==9.1.1

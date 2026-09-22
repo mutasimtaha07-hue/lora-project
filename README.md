@@ -121,6 +121,13 @@ see the report for the full breakdown by dataset.)
 
 ## Reproducibility
 
+### Hardware
+
+All 33 recorded runs in `results/raw/` were produced on an **NVIDIA RTX 5060 Laptop GPU**
+(~8 GB VRAM) — this is also the GPU targeted by the `torch==2.11.0+cu128` Blackwell/SM120
+build pinned in [`requirements.txt`](requirements.txt). Peak GPU memory figures recorded in
+each result JSON (`peak_gpu_memory_bytes`) should be interpreted relative to this hardware.
+
 ### 1. Install dependencies
 
 ```bash

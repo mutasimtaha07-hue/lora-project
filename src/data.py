@@ -1,10 +1,11 @@
 """Dataset loading and tokenization.
 
-Fully implemented and validated for SST-2 (the paper-reproduction dataset).
-AG News is registered with the same interface so the extension experiment
-(PROPOSAL.md Sec. "Extension dataset") is a config addition rather than a
-rewrite, but it has not been exercised/downloaded yet — that happens in a
-later implementation step.
+Both SST-2 (the paper-reproduction dataset) and AG News (the extension
+dataset, PROPOSAL.md Sec. "Extension dataset") are registered here through
+the same `DatasetSpec`/registry interface, so adding AG News was a config
+addition rather than a rewrite. Both are fully exercised: every LoRA rank/seed
+combination and full-fine-tuning baseline for both datasets has been run, with
+results recorded under `results/raw/` (see README.md and report/final_report.md).
 """
 
 from __future__ import annotations
